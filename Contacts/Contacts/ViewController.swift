@@ -13,17 +13,39 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
     // outlets
     @IBOutlet weak var btnBack: UIButton!
 
-    @IBOutlet weak var txtLast: UITextField!
-    @IBOutlet weak var txtAddress: UITextField!
-    
-    @IBOutlet weak var txtView: UITextView!
-    @IBOutlet weak var ScrollView: UIScrollView!
-    @IBOutlet weak var txtPhone: UITextField!
-    @IBOutlet weak var txtZip: UITextField!
-    @IBOutlet weak var txtState: UITextField!
-    @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var txtFirst: UITextField!
     
+    @IBOutlet weak var txtLast: UITextField!
+    
+    @IBOutlet weak var txtAddress: UITextField!
+    
+    @IBOutlet weak var ScrollView: UIScrollView!
+
+    @IBOutlet weak var txtCity: UITextField!
+    
+    @IBOutlet weak var txtState: UITextField!
+    
+    @IBOutlet weak var txtZip: UITextField!
+    
+    @IBOutlet weak var txtView: UITextView!
+    @IBOutlet weak var txtPhone: UITextField!
+    
+    @IBAction func btnView(_ sender: UIButton) {
+        
+        
+        //hide keyboard
+        DismissKeyboard()
+        
+        //declare CGPoint scrollPoint
+        var scrollPoint:CGPoint
+        
+        //X = from Left, Y = from Top
+        //get X = 0, Y = location of btnBack Y
+        scrollPoint = CGPoint(x: 0, y: btnBack.frame.origin.y)
+        
+        //Set ScrollPoint and Go to animated
+        ScrollView.setContentOffset(scrollPoint, animated: true)
+    }
     @IBOutlet weak var txtEmail: UITextField!
     // Actions
     // 1) Modify btnBack function. Goes back to original ScrollView position
@@ -37,6 +59,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         txtFirst.becomeFirstResponder()
     }
     
+
     
     //  2 Modify btnSave function. Validates UITextfields have content, formats text to place in UITextView txtView, Goes to location of btnBack button.
     @IBAction func btnSave(_ sender: UIButton) {
@@ -88,23 +111,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         }
     }
     
-    // 3) Modify existing viewDidLoad function. Default Function to load when view is shown
-    @IBAction func btnView(_ sender: UIButton) {
-        //Add Below Code from "Code for Steps.txt". Fulfill Each Comment With Code
-        
-        //hide keyboard
-        DismissKeyboard()
-        
-        //declare CGPoint scrollPoint
-        var scrollPoint:CGPoint
-        
-        //X = from Left, Y = from Top
-        //get X = 0, Y = location of btnBack Y
-        scrollPoint = CGPoint(x: 0, y: btnBack.frame.origin.y)
-        
-        //Set ScrollPoint and Go to animated
-        ScrollView.setContentOffset(scrollPoint, animated: true)
-    }
+
     
     
     // 4) Add MessageBox function using AlertView
@@ -126,8 +133,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         //forces resign first responder and hides keyboard
         txtFirst.endEditing(true)
         txtLast.endEditing(true)
+        txtAddress.endEditing(true)
+        txtCity.endEditing(true)
+        txtState.endEditing(true)
+        txtZip.endEditing(true)
+        txtPhone.endEditing(true)
         txtEmail.endEditing(true)
-        
         
     }
     
@@ -138,6 +149,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegat
         //forces resign first responder and hides keyboard
         txtFirst.endEditing(true)
         txtLast.endEditing(true)
+        txtAddress.endEditing(true)
+        txtCity.endEditing(true)
+        txtState.endEditing(true)
+        txtZip.endEditing(true)
+        txtPhone.endEditing(true)
         txtEmail.endEditing(true)
     
     }
